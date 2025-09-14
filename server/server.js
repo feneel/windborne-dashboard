@@ -12,15 +12,13 @@ const ROOT = path.resolve(__dirname, "..");
 const app = express();
 const PORT = process.env.PORT || 8080;
 const DEV_ORIGIN = process.env.DEV_ORIGIN || "http://localhost:5173";
-const PROD_ORIGIN =
-  process.env.FRONTEND_ORIGIN || "https://windborne-dashboard.vercel.app";
+const PROD_ORIGIN = process.env.FRONTEND_ORIGIN || "https://windborne-dashboard.vercel.app";
 
 app.use(express.json());
 
 app.use((req, res, next) => {
   // Pick origin based on environment
-  const allowedOrigin =
-    process.env.NODE_ENV === "production" ? PROD_ORIGIN : DEV_ORIGIN;
+  const allowedOrigin = PROD_ORIGIN;
 
   res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
   res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
