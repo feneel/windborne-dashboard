@@ -1,0 +1,12 @@
+/* Give the app a real height and remove default margins */
+html, body, #root { height: 100%; margin: 0; }
+* { box-sizing: border-box; }
+
+/* Simple 2-row layout: header + fill-the-rest content */
+.app   { height: 100%; display: flex; flex-direction: column; }
+.header{ padding: 8px 12px; background: #0b1020; color: #fff; font: 600 14px/1 system-ui; }
+.main  { flex: 1; min-height: 0; }   /* <- lets the child stretch fully */
+
+/* Leaflet needs a fixed-height ancestor; make a wrapper that fills .main */
+.map-wrap { position: relative; height: 100%; }
+.map-wrap .leaflet-container { position: absolute; inset: 0; }  /* map fills wrapper */
